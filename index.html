@@ -206,32 +206,43 @@
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script>
-        $("#navbar-menu").click(function () {//移除原有高亮
-            var url = String(window.location)
-            if (url.indexOf("#") > 0) {
-                var a = url.indexOf("#");
-                var option = url.substring(a);
-                $(option + "-li").removeClass("active")
-            }
-            else {
-                $("#index-li").removeClass("active")
-            }
-        })
-        $("a").click(function (e) {//新增高亮
-            var option = e.target.hash
-            $(option + "-li").addClass("active")
-        })
-        // document.getElementById("navbar-menu").click(function(){
-        //         var url = String(window.location)
-        //         console.log('clicked', url)
-        //         if (url.indexOf("#") > 0) 
-        //         {
-        //             var a = url.indexOf("#");
-        //             var option = url.substring(a);
-        //             console.log(url)
-        //             $(option+"-li").addClass("active")
-        //         }
+        // $("#navbar-menu").click(function () {//移除原有高亮
+        //     var url = String(window.location)
+        //     if (url.indexOf("#") > 0) {
+        //         var a = url.indexOf("#");
+        //         var option = url.substring(a);
+        //         $(option + "-li").removeClass("active")
+        //     }
+        //     else {
+        //         $("#index-li").removeClass("active")
+        //     }
         // })
+        // $("a").click(function (e) {//新增高亮
+        //     var option = e.target.hash
+        //     $(option + "-li").addClass("active")
+        // })
+        $(window).scroll(function (event) {
+            checkscroll()
+        });
+        function checkscroll() {
+            var item = ["#index-li", "#technology-li", "#science-li", "#about-li"]
+            var winPos = $(window).scrollTop(); //屏幕位置
+            var NodePos = [0, $('#index').offset().top, $('#technology').offset().top, $('#science').offset().top, $('#about').offset().top];//提前获取好元素位置
+            var length = NodePos.length;
+            console.log(NodePos)
+            if (winPos <= NodePos[1]) {
+                $("li").removeClass("active")
+                $(item[0]).addClass("active")
+            } else {
+                for (var i = 1; i < length; i++) {
+                    if (winPos <= NodePos[i + 1] && winPos > NodePos[i]) {
+                        $("li").removeClass("active")
+                        $(item[i]).addClass('active');
+                        break;
+                    }
+                }
+            }
+        }
     </script>
 </body>
 
