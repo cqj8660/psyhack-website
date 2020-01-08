@@ -16,27 +16,28 @@
 </head>
 
 <body>
-    <div class="pagebg"></div>
-    <div class="pagemain" id="index"style="padding-bottom: 200px;">
+    <div role="navigation" id="navbar-menu" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header"> <button data-target="#bs-example-navbar-collapse-11" data-toggle="collapse"
+                    class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">响应菜单</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button> <a href="#" class="navbar-brand">Logo</a> </div>
+            <div style="height: 1px;" id="bs-example-navbar-collapse-11" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="index-li" class="active"> <a href="#index" target="_self">关于产品 </a> </li>
+                    <li id="technology-li"> <a href="#technology" target="_self">关于技术 </a> </liid="index-li">
+                    <li id="science-li"> <a href="#science" target="_self">关于科学 </a> </li>
+                    <li id="about-li"> <a href="#about" target="_self">关于我们 </a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="pagemain" id="index" style="padding-bottom: 200px;padding-top:60px;">
         <div class="row base row-fluid clearfix">
+
             <div class="col-md-12">
-                <div role="navigation" class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header"> <button data-target="#bs-example-navbar-collapse-11"
-                                data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-                                <span class="sr-only">响应菜单</span> <span class="icon-bar"></span>
-                                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                            </button> <a href="#" class="navbar-brand">Logo</a> </div>
-                        <div style="height: 1px;" id="bs-example-navbar-collapse-11" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="active"> <a href="#index" target="_self">关于产品 </a> </li>
-                                <li> <a href="#technology" target="_self">关于技术 </a> </li>
-                                <li> <a href="#science" target="_self">关于科学 </a> </li>
-                                <li> <a href="#about" target="_self">关于我们 </a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row base row-fluid clearfix">
                     <div class="col-md-8">
                         <div class="row base row-fluid clearfix">
@@ -66,10 +67,10 @@
         </div>
     </div>
 
-    <div id="technology"class="pagemain" style="margin-top: 200px;padding-bottom: 200px;">
+    <div id="technology" class="pagemain" style="margin-top: 200px;padding-bottom: 200px;padding-top:60px;">
         <div class="row base row-fluid clearfix">
             <div class="col-md-12">
-                <div role="navigation" class="navbar navbar-default">
+                <!-- <div role="navigation" class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header"> <button data-target="#bs-example-navbar-collapse-11"
                                 data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -85,7 +86,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row base row-fluid clearfix" style="margin-top: 50px;margin-left: 50px;">
                     <div class="col-md-6"><img src="http://pic.51yuansu.com/pic3/cover/01/91/94/5982ae9c3788b_610.jpg"
                             class="img-rounded" style="width:500px;height:400px;">
@@ -122,10 +123,10 @@
         </div>
     </div>
 
-    <div id="science"class="pagemain" style="margin-top: 200px;padding-bottom: 200px;">
+    <div id="science" class="pagemain" style="margin-top: 200px;padding-bottom: 200px;padding-top:60px;">
         <div class="row base row-fluid clearfix">
             <div class="col-md-12">
-                <div role="navigation" class="navbar navbar-default">
+                <!-- <div role="navigation" class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header"> <button data-target="#bs-example-navbar-collapse-11"
                                 data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -141,7 +142,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row base row-fluid clearfix">
                     <div class="col-md-8">
                         <div
@@ -167,10 +168,10 @@
 
     </div>
 
-    <div id="about"class="pagemain" style="margin-top: 200px;padding-bottom: 200px;">
+    <div id="about" class="pagemain" style="margin-top: 200px;padding-bottom: 200px;">
         <div class="row base row-fluid clearfix">
             <div class="col-md-12">
-                <div role="navigation" class="navbar navbar-default">
+                <!-- <div role="navigation" class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header"> <button data-target="#bs-example-navbar-collapse-11"
                                 data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -186,7 +187,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row base row-fluid clearfix">
@@ -204,8 +205,34 @@
 
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
     <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- 包括所有已编译的插件 -->
-    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $("#navbar-menu").click(function () {//移除原有高亮
+            var url = String(window.location)
+            if (url.indexOf("#") > 0) {
+                var a = url.indexOf("#");
+                var option = url.substring(a);
+                $(option + "-li").removeClass("active")
+            }
+            else {
+                $("#index-li").removeClass("active")
+            }
+        })
+        $("a").click(function (e) {//新增高亮
+            var option = e.target.hash
+            $(option + "-li").addClass("active")
+        })
+        // document.getElementById("navbar-menu").click(function(){
+        //         var url = String(window.location)
+        //         console.log('clicked', url)
+        //         if (url.indexOf("#") > 0) 
+        //         {
+        //             var a = url.indexOf("#");
+        //             var option = url.substring(a);
+        //             console.log(url)
+        //             $(option+"-li").addClass("active")
+        //         }
+        // })
+    </script>
 </body>
 
 </html>
